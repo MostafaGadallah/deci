@@ -37,7 +37,7 @@ def get_type(): # asks the user for the type of calculations
 
 def get_operator(): # asks the user for the operation of calculations
     global operator #make operator global to use in rand function
-    operator = input_pause("second select operator of calculations + - * / :")
+    operator = input_pause("select operator of calculations + - * / :")
     while operator not in ["+", "-", "*", "/"]: # check if the input is valid
         print_pause("Wrong operator") # print an error message
         operator = input_pause("select operator of calculations + - * / :")
@@ -67,7 +67,7 @@ def compare_game(): # define a function to start the question
     print_pause("I'm sure I'll beat you next time") #  final percentage
     total_time=str(round(time.time() - start_total_time,1)) 
     print_pause("you keep alive for ")
-    print_pause(total_time,"seconds") # print total time
+    print_pause(total_time+"seconds") # print total time
     finish() #asks the user if he need to end the game
 
 def round_game(): # define a function to start the question
@@ -86,7 +86,7 @@ def round_game(): # define a function to start the question
     print_pause("I'm sure I'll beat you next time")
     total_time=str(round(time.time() - start_total_time,1)) 
     print_pause("you keep alive for ")
-    print_pause(total_time,"seconds") # print total time
+    print_pause(total_time+"seconds") # print total time
     finish() #asks the user if he need to end the game
 
 def rand():#generating a random calculation
