@@ -39,11 +39,11 @@ def get_operator(): # asks the user for the operation of calculations
     while operator not in ["+", "-", "*", "/"]: # check if the input is valid
         print_pause("Wrong operator") # print an error message
         operator = input_pause("second select operator of calculations + or - or * or / :") # ask for input again
-    # return operator # return the operator
     if game_type=="compare":
         compare_game()
     elif game_type=="result":
         round_game()
+
 def compare_game(): # define a function to start the question
     start_total_time = time.time() # start counting the time for all program
     score = 0
@@ -58,7 +58,8 @@ def compare_game(): # define a function to start the question
         calculation2 = calculation 
         res2 = res 
         print_pause("calculation 2 :" + calculation2)
-        score += check_answer_compare() # add the score variable by the returned value from check_answer_compare function
+        check_answer_compare()
+        score += 1  # add the score variable by the returned value from check_answer_compare function
         print_pause("your score is :" + str(score)) # print the current score
     print_pause("Nooooo you beat me") # print the final result as a percentage
     print_pause("I'm sure I'll beat you next time") # print the final result as a percentage
@@ -109,17 +110,13 @@ def check_answer_compare(): # chek if the user answer is true
     if userinput in["1",">"] and res1>res2 :
         print_pause("your answer is True")
     elif userinput in ["2","<"] and res2>res1:
-        # add_score(start_time)
         print_pause("your answer is True")
     elif userinput =="=" and res1==res2:
-        # add_score(start_time)
         print_pause("your answer is True")
     else :
-        # add_score(start_time)
         print_pause("yessss your answer is False")
         print_pause("you died hahahaaa")
         finish()
-    return 1
 
 def check_answer_round(): # chek if the user answer is true 
     start_time=time.time()
@@ -131,11 +128,9 @@ def check_answer_round(): # chek if the user answer is true
     if int(userinput) == int(res1) :
         print_pause("your answer is True")
     else :
-        # add_score(start_time)
         print_pause("yaaaa your answer is False")
         print_pause("you died hahahaaa")
         finish()
-    return 1
 
 def add_score(start_time): #if the time is out will make the score 0 else will add the score value by 1
     end_time=time.time()# end counting the time for the question
@@ -143,6 +138,7 @@ def add_score(start_time): #if the time is out will make the score 0 else will a
         print_pause("yaaaa time is out")
         print_pause("you died hahahaaa")
         finish()
+
 def finish(): # ask the user if he want to play more
     play_again=input_pause("Do you want to play again y - n :")
     while play_again.lower() not in ["y","yes","n","no"]:
@@ -155,4 +151,5 @@ def finish(): # ask the user if he want to play more
     elif play_again.lower() in ["n","no"]:  # if user do not need to play again the game will exit
         print_pause("thank you for playing our game")
         exit() #exit the program
+        
 start() #calling the start function to start the game
