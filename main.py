@@ -131,9 +131,10 @@ def check_answer_round(): # chek if the user answer is true
         print_pause("not valid input")
         userinput=input_pause("guees the result:")
     add_score(start_time) # check the time
-    if int(userinput) == int(res1) :
+    if int(userinput) == round(res1,0) :
         print_pause(monster_name +": your answer is True iam angry")
     else :
+        print(round(res1,0))
         print_pause(monster_name +": yessss your answer is False")
         print_pause(monster_name +": you died hahahaaa")
         finish()
