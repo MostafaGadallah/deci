@@ -27,11 +27,10 @@ def get_type(): # asks the user for the type of calculations
     global game_type #make game type global to use in rand function
     print_pause("you can guess the result of calculation (result)")
     print_pause("or you can compare betwen numbers and choose the bigger (compare)")
-    game_type = input_pause("select type of calculations result or comparison :") # get user input
+    game_type = input_pause("select type of calculations result or compare :") # get user input
     while game_type.lower() not in ["compare","result"]: # check if the input is valid
         print_pause("Wrong type") # print an error message
-        game_type = input_pause("select type of calculations result or comparison :") # ask for input again
-        # return game_type # return the operator
+        game_type = input_pause("select type of calculations result or compare :") # ask for input again
     get_operator() # get the operator from user input 
 
 def get_operator(): # asks the user for the operation of calculations
@@ -43,12 +42,12 @@ def get_operator(): # asks the user for the operation of calculations
     # return operator # return the operator
     if game_type=="compare":
         compare_game()
-    elif game_type=="round":
+    elif game_type=="result":
         round_game()
 def compare_game(): # define a function to start the question
     start_total_time = time.time() # start counting the time for all program
     score = 0
-    for i in range(20): 
+    for i in range(2): 
         global res1, res2 # make these variables global to use in answer functions
         print_pause("question numper " + str(i+1)) # print the question number
         rand() # calling rand function to generate random numbers
@@ -63,7 +62,7 @@ def compare_game(): # define a function to start the question
         print_pause("your score is :" + str(score)) # print the current score
     print_pause("Nooooo you beat me") # print the final result as a percentage
     print_pause("I'm sure I'll beat you next time") # print the final result as a percentage
-    print_pause("your total time = " + str(round(time.time - start_total_time,1)) + " seconds") # print the total time in seconds
+    print_pause("you keep alive for " + str(round(time.time() - start_total_time,1)) + " seconds") # print the total time in seconds
     finish() # calling finish function to asks the user if he need to end the game
 
 def round_game(): # define a function to start the question
@@ -75,11 +74,12 @@ def round_game(): # define a function to start the question
         rand() # calling rand function to generate random numbers
         res1 = res 
         print_pause("calculation is:" + calculation)
-        score += check_answer_round() # add the score variable by the returned value from check_answer_compare function
+        check_answer_round()
+        score += 1 # add the score variable by the returned value from check_answer_compare function
         print_pause("your score is :" + str(score)) # print the current score
     print_pause("Nooooo you beat me")
     print_pause("I'm sure I'll beat you next time")
-    print_pause("your total time = " + str(round(time.time - start_total_time,1)) + " seconds") # print the total time in seconds
+    print_pause("you keep alive for " + str(round(time.time() - start_total_time,1)) + " seconds") # print the total time in seconds
     finish() # calling finish function to asks the user if he need to end the game
 
 def rand():#generating a random calculation
@@ -105,21 +105,21 @@ def check_answer_compare(): # chek if the user answer is true
     while userinput not in ["1" ,"2","="]:
         print_pause("not valid input")
         userinput=input_pause("wich is bigger 1 or 2 or they are = :")
+    add_score(start_time) # check the time and add score by 1 if the time is time not out
     if userinput in["1",">"] and res1>res2 :
-        added_score= add_score(start_time) # check the time and add score by 1 if the time is time not out
         print_pause("your answer is True")
     elif userinput in ["2","<"] and res2>res1:
-        added_score= add_score(start_time)
+        # add_score(start_time)
         print_pause("your answer is True")
     elif userinput =="=" and res1==res2:
-        added_score= add_score(start_time)
+        # add_score(start_time)
         print_pause("your answer is True")
     else :
-        add_score(start_time)
+        # add_score(start_time)
         print_pause("yessss your answer is False")
         print_pause("you died hahahaaa")
         finish()
-    return added_score 
+    return 1
 
 def check_answer_round(): # chek if the user answer is true 
     start_time=time.time()
@@ -127,23 +127,22 @@ def check_answer_round(): # chek if the user answer is true
     while userinput.isdigit()!=True:
         print_pause("not valid input")
         userinput=input_pause("guees the result:")
+    add_score(start_time) # check the time and add score by 1 if the time is time not out
     if int(userinput) == int(res1) :
-        added_score= add_score(start_time) # check the time and add score by 1 if the time is time not out
         print_pause("your answer is True")
     else :
-        add_score(start_time)
+        # add_score(start_time)
         print_pause("yaaaa your answer is False")
         print_pause("you died hahahaaa")
         finish()
-    return added_score 
+    return 1
 
 def add_score(start_time): #if the time is out will make the score 0 else will add the score value by 1
     end_time=time.time()# end counting the time for the question
     if end_time-start_time>20:
-        print_pause("time is out and:")
-        return 0
-    elif end_time-start_time<=20:
-        return 1
+        print_pause("yaaaa time is out")
+        print_pause("you died hahahaaa")
+        finish()
 def finish(): # ask the user if he want to play more
     play_again=input_pause("Do you want to play again y - n :")
     while play_again.lower() not in ["y","yes","n","no"]:
