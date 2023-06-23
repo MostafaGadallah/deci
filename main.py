@@ -25,12 +25,12 @@ def monster():
 
 def get_type(): # asks the user for the type of calculations
     global game_type #make game type global to use in rand function
-    print_pause("or you can guess the round of calculation (round)")
-    print_pause("you can compare betwen numbers and choose the bigger (compare)")
-    game_type = input_pause("select type of calculations round or comparison :") # get user input
-    while game_type.lower() not in ["compare","round"]: # check if the input is valid
-        print_pause("Wrong operator") # print an error message
-        game_type = input_pause("select type of calculations round or comparison :") # ask for input again
+    print_pause("you can guess the result of calculation (result)")
+    print_pause("or you can compare betwen numbers and choose the bigger (compare)")
+    game_type = input_pause("select type of calculations result or comparison :") # get user input
+    while game_type.lower() not in ["compare","result"]: # check if the input is valid
+        print_pause("Wrong type") # print an error message
+        game_type = input_pause("select type of calculations result or comparison :") # ask for input again
         # return game_type # return the operator
     get_operator() # get the operator from user input 
 
