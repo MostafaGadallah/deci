@@ -46,13 +46,13 @@ def get_operator(): # asks the user for the operation of calculations
     elif game_type=="result":
         round_game()
 
-def compare_game(): # define a function to start the question
-    start_total_time = time.time() # start counting the time for all program
+def compare_game(): # start the compare game
     score = 0
-    for i in range(2): 
+    start_total_time = time.time() # start counting the time for all program
+    for i in range(20): 
         global res1, res2 # make these variables global
         print_pause("question numper " + str(i+1)) # print the question number
-        rand() # calling rand function to generate random numbers
+        rand() # generate random numbers
         calculation1 = calculation
         res1 = res 
         print_pause("calculation 1 :" + calculation1)
@@ -61,18 +61,17 @@ def compare_game(): # define a function to start the question
         res2 = res 
         print_pause("calculation 2 :" + calculation2)
         check_answer_compare()
-        score += 1  # add the score variable by 1
+        score += 1  # add the score by 1
         print_pause("your score is :" + str(score)) # print the current score
-    print_pause("Nooooo you beat me") # print the final result as a percentage
-    print_pause("I'm sure I'll beat you next time") #  final percentage
-    total_time=str(round(time.time() - start_total_time,1)) 
-    print_pause("you keep alive for ")
-    print_pause(total_time+"seconds") # print total time
+    print_pause("Nooooo you beat me") 
+    print_pause("Iam sure I will beat you next time")
+    total_time=str(round(time.time() - start_total_time,1))
+    print_pause("you keep alive for "+total_time+"seconds")
     finish() #asks the user if he need to end the game
 
-def round_game(): # define a function to start the question
-    start_total_time = time.time() # start counting the time for all program
+def round_game(): #start the round game
     score = 0
+    start_total_time = time.time() # start counting the time for all program
     for i in range(20): 
         global res1# make these variables global to use in answer functions
         print_pause("question numper " + str(i+1)) # print the question number
@@ -80,19 +79,18 @@ def round_game(): # define a function to start the question
         res1 = res 
         print_pause("calculation is:" + calculation)
         check_answer_round()
-        score += 1 # add the score variable by 1
+        score += 1 # add the score by 1
         print_pause("your score is :" + str(score)) # print the current score
     print_pause("Nooooo you beat me")
-    print_pause("I'm sure I'll beat you next time")
+    print_pause("Iam sure I will beat you next time")
     total_time=str(round(time.time() - start_total_time,1)) 
-    print_pause("you keep alive for ")
-    print_pause(total_time+"seconds") # print total time
+    print_pause("you keep alive for "+total_time+"seconds")
     finish() #asks the user if he need to end the game
 
 def rand():#generating a random calculation
         global calculation , res # make the calculation and the res global
         rand1=random.randrange(10)
-        rand2=random.randrange(1,10)  
+        rand2=random.randrange(1,10)
         if operator == "+": 
             calculation = str(rand1) + "+" + str(rand2)
             res=rand1+rand2
@@ -106,8 +104,8 @@ def rand():#generating a random calculation
             calculation = str(rand1) + "/" + str(rand2)
             res=rand1/rand2    
 
-def check_answer_compare(): # chek if the user answer is true 
-    start_time=time.time()
+def check_answer_compare(): # chek if comparing is true
+    start_time=time.time() #start counting the time
     userinput= input_pause("wich is bigger 1 or 2 or they are = :")
     while userinput not in ["1" ,"2","="]:
         print_pause("not valid input")
@@ -124,10 +122,10 @@ def check_answer_compare(): # chek if the user answer is true
         print_pause(monster_name +": you died hahahaaa")
         finish()
 
-def check_answer_round(): # chek if the user answer is true 
-    start_time=time.time()
+def check_answer_round(): # chek if result is true 
+    start_time=time.time() # start counting the time
     userinput= input_pause("guees the result:")
-    while userinput.isdigit()!=True:
+    while userinput.isdigit()!=True: #chek that is number
         print_pause("not valid input")
         userinput=input_pause("guees the result:")
     add_score(start_time) # check the time
@@ -159,4 +157,4 @@ def finish(): # ask the user if he want to play more
         print_pause("thank you for playing our game")
         exit() #exit the program
         
-start() #calling the start function to start the game
+start() # start the game
