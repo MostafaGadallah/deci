@@ -1,5 +1,6 @@
 import random
 import time
+from decimal import localcontext, Decimal, ROUND_HALF_UP
 def print_pause(text): #print the text and wait for 1 second
     print(text)
     time.sleep(0) #pause the execution for 1 second
@@ -66,7 +67,7 @@ def compare_game(): #start the compare game
         score += 1 #add the score by 1
         print_pause("your score is :" + str(score)) #print the current score
     print_pause(monster_name+" : Nooooo you beat me")
-    print_pause(monster_name+"Iam sure I will beat you next time")
+    print_pause(monster_name+" : Iam sure I will beat you next time")
     total_time=str(round(time.time() - start_total_time,1))
     print_pause(monster_name+" : you keep alive for "+total_time+"seconds")
     finish() #asks the user if he need to end the game
@@ -83,10 +84,10 @@ def result_game(): #start the result game
         check_answer_result()
         score += 1 #add the score by 1
         print_pause("your score is :" + str(score)) #print the current score
-    print_pause(monster_name+"Nooooo you beat me")
-    print_pause(monster_name+"Iam sure I will beat you next time")
+    print_pause(monster_name+" : Nooooo you beat me")
+    print_pause(monster_name+" : Iam sure I will beat you next time")
     total_time=str(round(time.time() - start_total_time,1))
-    print_pause(monster_name+"you keep alive for "+total_time+"seconds")
+    print_pause(monster_name+" : you keep alive for "+total_time+"seconds")
     finish() #asks the user if he need to end the game
 
 def rand():#generating a random calculation
@@ -136,11 +137,14 @@ def check_answer_result(): #chek if result is true
         print_pause("not valid input")
         userinput=input_pause("guees the result:")
     check_time(start_time) #check the time
-    if int(userinput) == round(res,0) :
+    with localcontext() as ctx:
+        ctx.rounding = ROUND_HALF_UP
+        ronded_value=Decimal(res).to_integral_value()
+    if int(userinput) == ronded_value :
         print_pause(monster_name +": your answer is True iam angry")
     else :
-        print("the true result is :"+str(round(res,0)))
         print_pause(monster_name +": yessss your answer is False")
+        print("the true result is :"+str(ronded_value))
         print_pause(monster_name +": you died hahahaaa")
         finish()
 
