@@ -11,8 +11,8 @@ def input_pause(text): #input the text and wait for 1 second
 
 def start(): #define a function to start the game
     global monster_name
-    print_pause("-------------------- * Adventure game * -------------------")
     monster_name=monster()
+    print_pause("-------------------- * Adventure game * -------------------")
     print_pause("You stuck forest and found a "+ monster_name)
     print_pause("He is hungry and wants to kill you but he gave you a chance")
     print_pause("If you answer the question correctly, it will let you live")
@@ -23,10 +23,10 @@ def start(): #define a function to start the game
     get_type() #get the Type of the question from user input
 
 def monster():
-    return random.choice(["lion","Gorila","snake","thief"])
+    return random.choice(["Lion","Gorila","Tiger","Dinasour","Chettah","Wolf","Bear"])
 
-def get_type(): #asks the user for the type of calculations
-    global game_type #make game type global to use in rand function
+def get_type(): #type of calculations
+    global game_type #make game type global
     print_pause("you can guess the result (result)")
     print_pause("or you can compare and choose the bigger (compare)")
     game_type=input_pause("select type of calculations result , compare:")
@@ -44,7 +44,7 @@ def get_operator(): #asks the user for the operation of calculations
     if game_type=="compare":
         compare_game()
     elif game_type=="result":
-        round_game()
+        result_game()
 
 def compare_game(): #start the compare game
     score = 0
@@ -63,13 +63,13 @@ def compare_game(): #start the compare game
         check_answer_compare()
         score += 1 #add the score by 1
         print_pause("your score is :" + str(score)) #print the current score
-    print_pause("Nooooo you beat me")
+    print_pause(monster_name+" : Nooooo you beat me")
     print_pause("Iam sure I will beat you next time")
     total_time=str(round(time.time() - start_total_time,1))
-    print_pause("you keep alive for "+total_time+"seconds")
+    print_pause(monster_name+" : you keep alive for "+total_time+"seconds")
     finish() #asks the user if he need to end the game
 
-def round_game(): #start the round game
+def result_game(): #start the result game
     score = 0
     start_total_time = time.time() #start counting the time for all program
     for i in range(20):
@@ -78,7 +78,7 @@ def round_game(): #start the round game
         rand() #calling rand function to generate random numbers
         res1 = res
         print_pause("calculation is:" + calculation)
-        check_answer_round()
+        check_answer_result()
         score += 1 #add the score by 1
         print_pause("your score is :" + str(score)) #print the current score
     print_pause("Nooooo you beat me")
@@ -122,7 +122,7 @@ def check_answer_compare(): #chek if comparing is true
         print_pause(monster_name +": you died hahahaaa")
         finish()
 
-def check_answer_round(): #chek if result is true
+def check_answer_result(): #chek if result is true
     start_time=time.time() #start counting the time
     userinput= input_pause("guees the result:")
     while userinput.isdigit()!=True: #chek that is number
