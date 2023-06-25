@@ -1,4 +1,4 @@
-# important this project require download (random , time , decimal) Libraries
+#important this project require download (random , time , decimal) Libraries
 import random
 import time
 from decimal import localcontext, Decimal, ROUND_HALF_UP
@@ -78,7 +78,6 @@ def result_game(): #start the result game
         global res1#make these variables global to use in answer functions
         print_pause("question numper " + str(i+1)) #question number
         rand() #calling rand function to generate random numbers
-        # res1 = res
         print_pause("calculation is:" + calculation)
         check_answer_result()
         score += 1 #add the score by 1
