@@ -121,11 +121,16 @@ def check_answer_compare(): #chek if comparing is true
         print_pause(monster_name +": yessss your answer is False")
         print_pause(monster_name +": you died hahahaaa")
         finish()
+def check_number(input):
+    try:
+        return int(input)
+    except:
+        return "notvalid"
 
 def check_answer_result(): #chek if result is true
     start_time=time.time() #start counting the time
     userinput= input_pause("guees the result:")
-    while userinput.isdigit()!=True: #chek that is number
+    while check_number(userinput)=="notvalid": #chek that is number
         print_pause("not valid input")
         userinput=input_pause("guees the result:")
     check_time(start_time) #check the time
