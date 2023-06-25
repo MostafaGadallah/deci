@@ -110,7 +110,7 @@ def check_answer_compare(): #chek if comparing is true
     while userinput not in ["1" ,"2","="]:
         print_pause("not valid input")
         userinput=input_pause("wich is bigger 1 or 2 or they are = :")
-    add_score(start_time) #check the time
+    check_time(start_time) #check the time
     if userinput in["1",">"] and res1>res2 :
         print_pause("your answer is True")
     elif userinput in ["2","<"] and res2>res1:
@@ -128,7 +128,7 @@ def check_answer_round(): #chek if result is true
     while userinput.isdigit()!=True: #chek that is number
         print_pause("not valid input")
         userinput=input_pause("guees the result:")
-    add_score(start_time) #check the time
+    check_time(start_time) #check the time
     if int(userinput) == round(res1,0) :
         print_pause(monster_name +": your answer is True iam angry")
     else :
@@ -137,7 +137,7 @@ def check_answer_round(): #chek if result is true
         print_pause(monster_name +": you died hahahaaa")
         finish()
 
-def add_score(start_time):
+def check_time(start_time):
     end_time=time.time()#end counting the time for the question
     if end_time-start_time>20:
         print_pause("yaaaa time is out")
