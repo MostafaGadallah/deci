@@ -23,7 +23,9 @@ def start(): #define a function to start the game
     get_type() #get the Type of the question from user input
 
 def monster():
-    return random.choice(["Lion","Gorila","Tiger","Dinasour","Chettah","Wolf","Bear"])
+    return random.choice(
+        ["Lion","Gorila","Tiger","Dinasour","Chettah","Wolf","Bear"]
+        )
 
 def get_type(): #type of calculations
     global game_type #make game type global
@@ -35,11 +37,11 @@ def get_type(): #type of calculations
         game_type=input_pause("select type of calculations result , compare:")
     get_operator() #get the operator from user input
 
-def get_operator(): #asks the user for the operation of calculations
-    global operator #make operator global to use in rand function
+def get_operator(): #operation of calculations
+    global operator #make operator global
     operator = input_pause("select operator of calculations + - * / :")
-    while operator not in ["+", "-", "*", "/"]: #check if the input is valid
-        print_pause("Wrong operator") #print an error message
+    while operator not in ["+", "-", "*", "/"]: #check input validity
+        print_pause("Wrong operator") #error message
         operator = input_pause("select operator of calculations + - * / :")
     if game_type=="compare":
         compare_game()
@@ -64,7 +66,7 @@ def compare_game(): #start the compare game
         score += 1 #add the score by 1
         print_pause("your score is :" + str(score)) #print the current score
     print_pause(monster_name+" : Nooooo you beat me")
-    print_pause("Iam sure I will beat you next time")
+    print_pause(monster_name+"Iam sure I will beat you next time")
     total_time=str(round(time.time() - start_total_time,1))
     print_pause(monster_name+" : you keep alive for "+total_time+"seconds")
     finish() #asks the user if he need to end the game
@@ -74,21 +76,21 @@ def result_game(): #start the result game
     start_total_time = time.time() #start counting the time for all program
     for i in range(20):
         global res1#make these variables global to use in answer functions
-        print_pause("question numper " + str(i+1)) #print the question number
+        print_pause("question numper " + str(i+1)) #question number
         rand() #calling rand function to generate random numbers
-        res1 = res
+        # res1 = res
         print_pause("calculation is:" + calculation)
         check_answer_result()
         score += 1 #add the score by 1
         print_pause("your score is :" + str(score)) #print the current score
-    print_pause("Nooooo you beat me")
-    print_pause("Iam sure I will beat you next time")
+    print_pause(monster_name+"Nooooo you beat me")
+    print_pause(monster_name+"Iam sure I will beat you next time")
     total_time=str(round(time.time() - start_total_time,1))
-    print_pause("you keep alive for "+total_time+"seconds")
+    print_pause(monster_name+"you keep alive for "+total_time+"seconds")
     finish() #asks the user if he need to end the game
 
 def rand():#generating a random calculation
-        global calculation , res #make the calculation and the res global
+        global calculation , res #make the calculation , res global
         rand1=random.randrange(10)
         rand2=random.randrange(1,10)
         if operator == "+":
@@ -134,10 +136,10 @@ def check_answer_result(): #chek if result is true
         print_pause("not valid input")
         userinput=input_pause("guees the result:")
     check_time(start_time) #check the time
-    if int(userinput) == round(res1,0) :
+    if int(userinput) == round(res,0) :
         print_pause(monster_name +": your answer is True iam angry")
     else :
-        print(round(res1,0))
+        print("the true result is :"+str(round(res,0)))
         print_pause(monster_name +": yessss your answer is False")
         print_pause(monster_name +": you died hahahaaa")
         finish()
