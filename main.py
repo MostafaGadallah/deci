@@ -1,3 +1,4 @@
+# important this project require download (random , time , decimal) Libraries
 import random
 import time
 from decimal import localcontext, Decimal, ROUND_HALF_UP
@@ -38,31 +39,29 @@ def get_type(): #type of calculations
         game_type=input_pause("select type of calculations result , compare:")
     get_operator() #get the operator from user input
 
-def get_operator(): #operation of calculations
+def get_operator(): #operator of calculations
     global operator #make operator global
     operator = input_pause("select operator of calculations + - * / :")
     while operator not in ["+", "-", "*", "/"]: #check input validity
         print_pause("Wrong operator") #error message
         operator = input_pause("select operator of calculations + - * / :")
     if game_type=="compare":
-        compare_game()
+        compare_game() #start the compare game
     elif game_type=="result":
-        result_game()
+        result_game() #start the result game
 
 def compare_game(): #start the compare game
     score = 0
     start_total_time = time.time() #start counting the time for all program
     for i in range(20):
         global res1, res2 #make these variables global
-        print_pause("question numper " + str(i+1)) #print the question number
+        print_pause("question numper " + str(i+1)) #question number
         rand() #generate random numbers
-        calculation1 = calculation
         res1 = res
-        print_pause("calculation 1 :" + calculation1)
+        print_pause("calculation 1 :" + calculation)
         rand()#generate another random numbers
-        calculation2 = calculation
         res2 = res
-        print_pause("calculation 2 :" + calculation2)
+        print_pause("calculation 2 :" + calculation)
         check_answer_compare()
         score += 1 #add the score by 1
         print_pause("your score is :" + str(score)) #print the current score
@@ -110,7 +109,7 @@ def rand():#generating a random calculation
 def check_answer_compare(): #chek if comparing is true
     start_time=time.time() #start counting the time
     userinput= input_pause("wich is bigger 1 or 2 or they are = :")
-    while userinput not in ["1" ,"2","="]:
+    while userinput not in ["1" ,"2","=",">","<"]:#check validaty
         print_pause("not valid input")
         userinput=input_pause("wich is bigger 1 or 2 or they are = :")
     check_time(start_time) #check the time
@@ -124,6 +123,7 @@ def check_answer_compare(): #chek if comparing is true
         print_pause(monster_name +": yessss your answer is False")
         print_pause(monster_name +": you died hahahaaa")
         finish()
+
 def check_number(input):
     try:
         return int(input)
