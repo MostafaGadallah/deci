@@ -22,9 +22,9 @@ def start(): #define a function to start the game
     print_pause("you have 20 second for answer each question ")
     print_pause("there is another monster come to kill you be fast")
     print_pause("good luck for you")
-    get_type() #get the Type of the question from user input
+    get_type() #ask user for Type of the questions
 
-def monster():
+def monster():#random monster
     return random.choice(
         ["Lion","Gorila","Tiger","Dinasour","Chettah","Wolf","Bear"]
         )
@@ -34,10 +34,10 @@ def get_type(): #type of calculations
     print_pause("you can guess the result (result)")
     print_pause("or you can compare and choose the bigger (compare)")
     game_type=input_pause("select type of calculations result , compare:")
-    while game_type.lower() not in ["compare","result"]: #check is valid
-        print_pause("Wrong type") #print an error message
+    while game_type.lower() not in ["compare","result"]: #check validaty
+        print_pause("Wrong type") #error message
         game_type=input_pause("select type of calculations result , compare:")
-    get_operator() #get the operator from user input
+    get_operator() #ask user for operator of the questions
 
 def get_operator(): #operator of calculations
     global operator #make operator global
@@ -148,15 +148,15 @@ def check_answer_result(): #chek if result is true
         finish()
 
 def check_time(start_time):
-    end_time=time.time()#end counting the time for the question
+    end_time=time.time()#end counting the time for question
     if end_time-start_time>20:
         print_pause("yaaaa time is out")
         print_pause("you died hahahaaa")
         finish()
 
-def finish(): #ask the user if he want to play more
+def finish(): #ask the user if he want to play again
     play_again=input_pause("Do you want to play again y - n :")
-    while play_again.lower() not in ["y","yes","n","no"]:
+    while play_again.lower() not in ["y","yes","n","no"]:#check validaty
         print_pause("un valid input")
         play_again=input_pause("Do you want to play again y - n :")
     if play_again.lower() in["y" ,"yes"]: #if user need to play again
