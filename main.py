@@ -15,12 +15,12 @@ def start(): #define a function to start the game
     global monster_name
     monster_name=monster()
     print_pause("-------------------- * Adventure game * -------------------")
-    print_pause("You stuck forest and found a "+ monster_name)
+    print_pause("You stuck in forest and found a "+ monster_name)
     print_pause("He is hungry and wants to kill you but he gave you a chance")
     print_pause("If you answer the question correctly, it will let you live")
     print_pause("you have 20 question")
     print_pause("you have 20 second for answer each question ")
-    print_pause("there is another monster come to kill you be fast")
+    print_pause("He counting every second be careful")
     print_pause("good luck for you")
     get_type() #ask user for Type of the questions
 
@@ -117,10 +117,10 @@ def check_answer_compare(): #chek if comparing is true
     elif userinput in ["2","<"] and res2>res1:
         print_pause("your answer is True")
     elif userinput =="=" and res1==res2:
-        print_pause(monster_name +": your answer is True iam angry")
+        print_pause(monster_name +" : your answer is True iam angry")
     else :
-        print_pause(monster_name +": yessss your answer is False")
-        print_pause(monster_name +": you died hahahaaa")
+        print_pause(monster_name +" : yessss your answer is False")
+        print_pause(monster_name +" : you died hahahaaa")
         finish()
 
 def check_number(input):
@@ -140,17 +140,17 @@ def check_answer_result(): #chek if result is true
         ctx.rounding = ROUND_HALF_UP
         ronded_value=Decimal(res).to_integral_value()
     if int(userinput) == ronded_value :
-        print_pause(monster_name +": your answer is True iam angry")
+        print_pause(monster_name +" : your answer is True iam angry")
     else :
-        print_pause(monster_name +": yessss your answer is False")
+        print_pause(monster_name +" : yessss your answer is False")
         print("the true result is :"+str(ronded_value))
-        print_pause(monster_name +": you died hahahaaa")
+        print_pause(monster_name +" : you died hahahaaa")
         finish()
 
 def check_time(start_time):
     end_time=time.time()#end counting the time for question
     if end_time-start_time>20:
-        print_pause("yaaaa time is out")
+        print_pause( monster_name+" : yaaaa time is out")
         print_pause("you died hahahaaa")
         finish()
 
