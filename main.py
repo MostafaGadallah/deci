@@ -19,7 +19,7 @@ def start(): #start the game
     print_pause("He is hungry and wants to kill you but he gave you a chance")
     print_pause("If you answer the question correctly, it will let you live")
     print_pause("you have 20 question")
-    print_pause("you have 20 second for answer each question ")
+    print_pause("you have 15 second for answer each question ")
     print_pause("He counting every second be careful")
     print_pause("good luck for you")
     get_type() #ask user for Type of the questions
@@ -142,7 +142,7 @@ def check_answer_result(): #chek if result is true
 
 def check_time(start_time):
     end_time=time.time()#end counting the time for question
-    if end_time-start_time>20:
+    if end_time-start_time>15:
         print_pause( monster_name+" : yaaaa time is out")
         print_pause(monster_name+" : you died hahahaaa")
         finish()
