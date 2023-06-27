@@ -11,7 +11,7 @@ def input_pause(text): #input the text and wait for 1 second
     time.sleep(0) #pause the execution for 1 second
     return user_input
 
-def start(): #define a function to start the game
+def start(): #start the game
     global monster_name
     monster_name=monster()
     print_pause("-------------------- * Adventure game * -------------------")
@@ -53,11 +53,11 @@ def start_puestions():
     for i in range(20):
         print_pause("question numper " + str(i+1)) #question number
         if game_type=="compare":
-            compare_game() #start the compare game
+            compare_game() #start compare game
         elif game_type=="result":
-            result_game() #start the result game
+            result_game() #start result game
         score+=1
-        print_pause("your score is :" + str(score)) #print the current score
+        print_pause("your score is :" + str(score)) #current score
     print_pause(monster_name+" : Nooooo you beat me")
     print_pause(monster_name+" : Iam sure I will beat you next time")
     total_time=str(round(time.time() - start_total_time,1))
@@ -97,7 +97,7 @@ def rand():#generating a random calculation
             res=rand1/rand2
 
 def check_answer_compare(): #chek if comparing is true
-    start_time=time.time() #start counting the time
+    start_time=time.time() #start counting question time
     userinput= input_pause("wich is bigger 1 or 2 or they are = :")
     while userinput not in ["1" ,"2","=",">","<"]:#check validaty
         print_pause("not valid input")
@@ -114,7 +114,7 @@ def check_answer_compare(): #chek if comparing is true
         print_pause(monster_name +" : you died hahahaaa")
         finish()
 
-def check_number(input):
+def check_number(input):#check if input is numper
     try:
         return int(input)
     except:
@@ -129,7 +129,9 @@ def check_answer_result(): #chek if result is true
     check_time(start_time) #check the time
     with localcontext() as ctx:
         ctx.rounding = ROUND_HALF_UP
-        ronded_value=Decimal(res).to_integral_value()
+        ronded_value=Decimal(res).to_integral_value()#round the number
+        #i use to_integral_value() instead of round()
+        # because round function round the half to downand the other do else
     if int(userinput) == ronded_value :
         print_pause(monster_name +" : your answer is True iam angry")
     else :
