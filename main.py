@@ -130,7 +130,7 @@ def check_answer_compare():  # chek if comparing is true
 def check_number(input):  # check if input is numper
     try:
         return int(input)
-    except err:
+    except NameError:
         return "notvalid"
 
 
