@@ -45,48 +45,39 @@ def get_operator(): #operator of calculations
     while operator not in ["+", "-", "*", "/"]: #check input validity
         print_pause("Wrong operator") #error message
         operator = input_pause("select operator of calculations + - * / :")
-    if game_type=="compare":
-        compare_game() #start the compare game
-    elif game_type=="result":
-        result_game() #start the result game
+    start_puestions()
+
+def start_puestions():
+    score = 0
+    start_total_time = time.time() #start counting the time for all program
+    for i in range(20):
+        print_pause("question numper " + str(i+1)) #question number
+        if game_type=="compare":
+            compare_game() #start the compare game
+        elif game_type=="result":
+            result_game() #start the result game
+        score+=1
+        print_pause("your score is :" + str(score)) #print the current score
+    print_pause(monster_name+" : Nooooo you beat me")
+    print_pause(monster_name+" : Iam sure I will beat you next time")
+    total_time=str(round(time.time() - start_total_time,1))
+    print_pause(monster_name+" : you keep alive for "+total_time+"seconds")
+    finish() #asks the user if he need to end the game
 
 def compare_game(): #start the compare game
-    score = 0
-    start_total_time = time.time() #start counting the time for all program
-    for i in range(20):
-        global res1, res2 #make these variables global
-        print_pause("question numper " + str(i+1)) #question number
-        rand() #generate random numbers
-        res1 = res
-        print_pause("calculation 1 :" + calculation)
-        rand()#generate another random numbers
-        res2 = res
-        print_pause("calculation 2 :" + calculation)
-        check_answer_compare()
-        score += 1 #add the score by 1
-        print_pause("your score is :" + str(score)) #print the current score
-    print_pause(monster_name+" : Nooooo you beat me")
-    print_pause(monster_name+" : Iam sure I will beat you next time")
-    total_time=str(round(time.time() - start_total_time,1))
-    print_pause(monster_name+" : you keep alive for "+total_time+"seconds")
-    finish() #asks the user if he need to end the game
+    global res1, res2 #make these variables global
+    rand() #generate random numbers
+    res1 = res
+    print_pause("calculation 1 :" + calculation)
+    rand()#generate another random numbers
+    res2 = res
+    print_pause("calculation 2 :" + calculation)
+    check_answer_compare()
 
 def result_game(): #start the result game
-    score = 0
-    start_total_time = time.time() #start counting the time for all program
-    for i in range(20):
-        global res1#make these variables global to use in answer functions
-        print_pause("question numper " + str(i+1)) #question number
-        rand() #calling rand function to generate random numbers
-        print_pause("calculation is:" + calculation)
-        check_answer_result()
-        score += 1 #add the score by 1
-        print_pause("your score is :" + str(score)) #print the current score
-    print_pause(monster_name+" : Nooooo you beat me")
-    print_pause(monster_name+" : Iam sure I will beat you next time")
-    total_time=str(round(time.time() - start_total_time,1))
-    print_pause(monster_name+" : you keep alive for "+total_time+"seconds")
-    finish() #asks the user if he need to end the game
+    rand() #calling rand function to generate random numbers
+    print_pause("calculation is:" + calculation)
+    check_answer_result()
 
 def rand():#generating a random calculation
         global calculation , res #make the calculation , res global
@@ -151,7 +142,7 @@ def check_time(start_time):
     end_time=time.time()#end counting the time for question
     if end_time-start_time>20:
         print_pause( monster_name+" : yaaaa time is out")
-        print_pause("you died hahahaaa")
+        print_pause(monster_name+" : you died hahahaaa")
         finish()
 
 def finish(): #ask the user if he want to play again
