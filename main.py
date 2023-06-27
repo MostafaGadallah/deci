@@ -4,11 +4,11 @@ import time
 from decimal import localcontext, Decimal, ROUND_HALF_UP
 def print_pause(text): #print the text and wait for 1 second
     print(text)
-    time.sleep(0) #pause the execution for 1 second
+    time.sleep(1) #pause the execution for 1 second
 
 def input_pause(text): #input the text and wait for 1 second
     user_input=input(text)
-    time.sleep(0) #pause the execution for 1 second
+    time.sleep(1) #pause the execution for 1 second
     return user_input
 
 def start(): #start the game
@@ -31,7 +31,7 @@ def monster():#random monster
 
 def get_type(): #type of calculations
     global game_type #make game type global
-    print_pause("you can guess the result (result)")
+    print_pause("you can guess the rounded result (result)")
     print_pause("or you can compare and choose the bigger (compare)")
     game_type=input_pause("select type of calculations result , compare:")
     while game_type.lower() not in ["compare","result"]: #check validaty
@@ -104,9 +104,9 @@ def check_answer_compare(): #chek if comparing is true
         userinput=input_pause("wich is bigger 1 or 2 or they are = :")
     check_time(start_time) #check the time
     if userinput in["1",">"] and res1>res2 :
-        print_pause("your answer is True")
+        print_pause(monster_name +" : your answer is True iam angry")
     elif userinput in ["2","<"] and res2>res1:
-        print_pause("your answer is True")
+        print_pause(monster_name +" : your answer is True iam angry")
     elif userinput =="=" and res1==res2:
         print_pause(monster_name +" : your answer is True iam angry")
     else :
