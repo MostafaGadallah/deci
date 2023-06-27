@@ -39,10 +39,10 @@ def get_type():  # type of calculations
     global game_type  # make game type global
     print_pause("you can guess the rounded result (result)")
     print_pause("or you can compare and choose the bigger (compare)")
-    game_type = input_pause("select type of calculations result , compare:")
+    game_type = input_pause("type of calculations result , compare:")
     while game_type.lower() not in ["compare", "result"]:  # check validaty
         print_pause("Wrong type")  # error message
-        game_type = input_pause("select type of calculations result , compare:")
+        game_type = input_pause("type of calculations result , compare:")
     get_operator()  # ask user for operator of the questions
 
 
@@ -130,7 +130,7 @@ def check_answer_compare():  # chek if comparing is true
 def check_number(input):  # check if input is numper
     try:
         return int(input)
-    except:
+    except err:
         return "notvalid"
 
 
@@ -139,41 +139,42 @@ def check_answer_result():  # chek if result is true
     userinput = input_pause("guees the result:")
     while check_number(userinput) == "notvalid":  # chek that is number
         print_pause("not valid input")
-        userinput=input_pause("guees the result:")
+        userinput = input_pause("guees the result:")
     check_time(start_time)  # check the time
     with localcontext() as ctx:
         ctx.rounding = ROUND_HALF_UP
         ronded_value = Decimal(res).to_integral_value()  # round the number
 # i use to_integral_value() instead of round()
 #  because round function round the half to downand the other do else
-    if int(userinput) == ronded_value :
-        print_pause(monster_name +" : your answer is True iam angry")
-    else :
-        print_pause(monster_name +" : yessss your answer is False")
+    if int(userinput) == ronded_value:
+        print_pause(monster_name + " : your answer is True iam angry")
+    else:
+        print_pause(monster_name + " : yessss your answer is False")
         print("the true result is :"+str(ronded_value))
-        print_pause(monster_name +" : you died hahahaaa")
+        print_pause(monster_name + " : you died hahahaaa")
         finish()
 
 
 def check_time(start_time):
-    end_time=time.time()  # end counting the time for question
-    if end_time-start_time>15:
-        print_pause( monster_name+" : yaaaa time is out")
+    end_time = time.time()  # end counting the time for question
+    if end_time-start_time > 15:
+        print_pause(monster_name+" : yaaaa time is out")
         print_pause(monster_name+" : you died hahahaaa")
         finish()
 
 
 def finish():  # ask the user if he want to play again
-    play_again=input_pause("Do you want to play again y - n :")
-    while play_again.lower() not in ["y","yes","n","no"]:# check validaty
+    play_again = input_pause("Do you want to play again y - n :")
+    while play_again.lower() not in ["y", "yes", "n", "no"]:  # check validaty
         print_pause("un valid input")
-        play_again=input_pause("Do you want to play again y - n :")
-    if play_again.lower() in["y" ,"yes"]:  # if user need to play again
+        play_again = input_pause("Do you want to play again y - n :")
+    if play_again.lower() in ["y", "yes"]:  # if user need to play again
         print_pause("score more in next game")
         print_pause("Are you ready")
         start()  # play the game again
-    elif play_again.lower() in ["n","no"]:  # if user need to exit
+    elif play_again.lower() in ["n", "no"]:  # if user need to exit
         print_pause("thank you for playing our game")
         exit()  # exit the program
+
 
 start()  # start the game
