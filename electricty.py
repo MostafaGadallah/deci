@@ -170,12 +170,12 @@ def change_user_name():
 def change_password():
     global tpassword
     check()
-    npassword = checked_input("new username:")
-    cnpassword = checked_input("confirm new username:")
+    npassword = checked_input("new password:")
+    cnpassword = checked_input("confirm new password:")
     while cnpassword != npassword:
         print("not identicl")
-        npassword = checked_input("new username:")
-        cnpassword = checked_input("confirm new username:")
+        npassword = checked_input("new password:")
+        cnpassword = checked_input("confirm new password:")
     tpassword = cnpassword
 
 

@@ -20,7 +20,7 @@ def start():
         while function not in [
             "livecam", "close_or_open",
             "start_record", "add_finger_print",
-            "end_record", "exit", "totem","check"
+            "end_record", "exit", "totem", "check",
             "change_user_name", "change_password"
         ]:
             print("un valid input")
@@ -88,6 +88,7 @@ def check():
         while fingerprint not in tfingerprint:
             print("this finger print not have acsses")
             fingerprint = checked_input("enter your finger print:")
+    print("true credintial")
 
 
 def change_user_name():
@@ -99,16 +100,17 @@ def change_user_name():
         nusername = checked_input("new username")
         cnusername = checked_input("confirm new username")
     tusername = cnusername
+    
 
 
 def change_password():
     global tpassword
     check()
-    npassword = checked_input("new username")
-    cnpassword = checked_input("confirm new username")
+    npassword = checked_input("new password")
+    cnpassword = checked_input("confirm new password")
     while cnpassword != npassword:
-        npassword = checked_input("new username")
-        cnpassword = checked_input("confirm new username")
+        npassword = checked_input("new password")
+        cnpassword = checked_input("confirm new password")
     tpassword = cnpassword
 
 
@@ -205,17 +207,19 @@ check
 finger_print
 mostafa
 change_user_name
+credintial
 smart_aliens
 break_the_mold
 three_ais
 three_ais
 check
-finger_print
+credintial
 smart_aliens
 break_the_mold
 three_ais
 break_the_mold
 change_password
+credintial
 three_ais
 break_the_mold
 out_of_the_box
