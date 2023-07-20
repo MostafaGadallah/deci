@@ -6,10 +6,17 @@ tpassword = "break_the_mold"
 tfingerprint = ["mega mind"]
 
 
+def checked_input(uinput):
+    if uinput == "exit":
+        exit()
+    else:
+        return input(uinput)
+
+
 def start():
     check()
     while True:
-        function = input("what do you need to do :")
+        function = checked_input("what do you need to do :")
         while function not in [
             "livecam", "close_or_open",
             "start_record", "add_finger_print",
@@ -17,7 +24,7 @@ def start():
             "change_user_name", "change_password"
         ]:
             print("un valid input")
-            function = input("what do you need to do :")
+            function = checked_input("what do you need to do :")
         if function == "livecam":
             livecam()
         elif function == "close_or_open":
@@ -63,55 +70,55 @@ def send_notification():
 
 
 def check():
-    choise = input("credintial or finger print:")
+    choise = checked_input("credintial or finger print:")
     while choise not in ["finger print", "credintial"]:
         print("un valid input")
-        choise = input("credintial or finger print:")
+        choise = checked_input("credintial or finger print:")
     if choise == "credintial":
-        username = input("your user name:")
-        pasword = input("your password:")
+        username = checked_input("your user name:")
+        pasword = checked_input("your password:")
         while username != tusername or pasword != tpassword:
             print("wrong credintial")
-            username = input("your user name:")
-            pasword = input("your password:")
+            username = checked_input("your user name:")
+            pasword = checked_input("your password:")
     elif choise == "finger print":
-        fingerprint = input("enter your finger print:")
+        fingerprint = checked_input("enter your finger print:")
         while fingerprint not in tfingerprint:
             print("this finger print not have acsses")
-            fingerprint = input("enter your finger print:")
+            fingerprint = checked_input("enter your finger print:")
 
 
 def change_user_name():
     global tusername
     check()
-    nusername = input("new username")
-    cnusername = input("confirm new username")
+    nusername = checked_input("new username")
+    cnusername = checked_input("confirm new username")
     while cnusername != nusername:
-        nusername = input("new username")
-        cnusername = input("confirm new username")
+        nusername = checked_input("new username")
+        cnusername = checked_input("confirm new username")
     tusername = cnusername
 
 
 def change_password():
     global tpassword
     check()
-    npassword = input("new username")
-    cnpassword = input("confirm new username")
+    npassword = checked_input("new username")
+    cnpassword = checked_input("confirm new username")
     while cnpassword != npassword:
-        npassword = input("new username")
-        cnpassword = input("confirm new username")
+        npassword = checked_input("new username")
+        cnpassword = checked_input("confirm new username")
     tpassword = cnpassword
 
 
 def add_finger_print():
-    finger_print = input("enter new finger print")
+    finger_print = checked_input("enter new finger print")
     tfingerprint.append(finger_print)
 
 
 def livecam():
-    # name=input("is there one out door:")
+    # name=checked_input("is there one out door:")
     # while name not in ["yes","no"]:
-    #     name=input("is there one out door:")
+    #     name=checked_input("is there one out door:")
     # if name =="yes":
     #     print("there is one out door")
     # else:
@@ -121,9 +128,9 @@ def livecam():
 
 
 def close_or_open():
-    chosie = input("close or open:")
+    chosie = checked_input("close or open:")
     while chosie not in ["close", "open"]:
-        chosie = input("close or open:")
+        chosie = checked_input("close or open:")
     if chosie == "close":
         print("the door is closed")
     else:
@@ -131,14 +138,14 @@ def close_or_open():
 
 
 def storage():
-    chosie = input("do you want to enter storage section:")
+    chosie = checked_input("do you want to enter storage section:")
     while chosie not in ["yes", "no"]:
-        chosie = input("do you want to enter storage section:")
+        chosie = checked_input("do you want to enter storage section:")
     if chosie == "yes":
         print("you are in storage section")
-        section = input("fingerprint,photos or videos:")
+        section = checked_input("fingerprint,photos or videos:")
         while section not in ["fingerprint", "photos", "videos"]:
-            section = input("fingerprint,photos or videos:")
+            section = checked_input("fingerprint,photos or videos:")
         print("you are now in the "+section+" section")
     else:
         print("you are  in main section")
@@ -146,9 +153,9 @@ def storage():
 
 def start_record():
     global record
-    chosie = input("do you want to start record:")
+    chosie = checked_input("do you want to start record:")
     while chosie not in ["yes", "no"]:
-        chosie = input("do you want to start record:")
+        chosie = checked_input("do you want to start record:")
     if chosie == "yes":
         record = True
         print("record started")
@@ -161,9 +168,9 @@ def start_record():
 
 def end_record():
     if record:
-        chosie = input("do you want to end record:")
+        chosie = checked_input("do you want to end record:")
         while chosie not in ["yes", "no"]:
-            chosie = input("do you want to end record:")
+            chosie = checked_input("do you want to end record:")
         if chosie == "yes":
             print("record ended")
         else:

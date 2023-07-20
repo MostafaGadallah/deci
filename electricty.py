@@ -29,7 +29,7 @@ def start():
         elif function == "change_user_name":
             change_user_name()
         elif function == "check":
-            print(check())
+            check()
         elif function == "change_password":
             change_password()
         elif function == "close_or_open":
@@ -152,6 +152,7 @@ def check():
         print("wrong credintial")
         username = checked_input("your user name:")
         pasword = checked_input("your password:")
+    print("true credintial")
 
 
 def change_user_name():
