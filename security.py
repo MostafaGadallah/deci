@@ -3,7 +3,7 @@ import webbrowser
 record = False
 tusername = "smart_aliens"
 tpassword = "break_the_mold"
-tfingerprint = ["mega mind"]
+tfingerprint = ["mega_mind"]
 
 
 def checked_input(uinput):
@@ -20,7 +20,7 @@ def start():
         while function not in [
             "livecam", "close_or_open",
             "start_record", "add_finger_print",
-            "end_record", "exit", "totem",
+            "end_record", "exit", "totem","check"
             "change_user_name", "change_password"
         ]:
             print("un valid input")
@@ -29,6 +29,8 @@ def start():
             livecam()
         elif function == "close_or_open":
             close_or_open()
+        elif function == "check":
+            check()
         elif function == "start_record":
             start_record()
         elif function == "end_record":
@@ -71,7 +73,7 @@ def send_notification():
 
 def check():
     choise = checked_input("credintial or finger print:")
-    while choise not in ["finger print", "credintial"]:
+    while choise not in ["finger_print", "credintial"]:
         print("un valid input")
         choise = checked_input("credintial or finger print:")
     if choise == "credintial":
@@ -81,7 +83,7 @@ def check():
             print("wrong credintial")
             username = checked_input("your user name:")
             pasword = checked_input("your password:")
-    elif choise == "finger print":
+    elif choise == "finger_print":
         fingerprint = checked_input("enter your finger print:")
         while fingerprint not in tfingerprint:
             print("this finger print not have acsses")
@@ -123,7 +125,7 @@ def livecam():
     #     print("there is one out door")
     # else:
     #     print("there is no one out door")
-    webbrowser.open_new("https://www.bit.ly/3XXXSLE")
+    # webbrowser.open_new("https://www.bit.ly/3XXXSLE")
     print("https://www.bit.ly/3XXXSLE")
 
 
@@ -180,6 +182,48 @@ def end_record():
 
 
 start()
-""""
-
+"""
+credintial
+smart_aliens
+wrong_password
+wrong_user_name
+break_the_mold
+smart_aliens
+break_the_mold
+sadkjdakljdkja
+livecam
+totem
+end_record
+start_record
+yes
+no
+end_record
+yes
+add_finger_print
+mostafa
+check
+finger_print
+mostafa
+change_user_name
+smart_aliens
+break_the_mold
+three_ais
+three_ais
+check
+finger_print
+smart_aliens
+break_the_mold
+three_ais
+break_the_mold
+change_password
+three_ais
+break_the_mold
+out_of_the_box
+out_of_the_box
+check
+three_ais
+out_of_the_box
+close_or_open
+open
+exit
 """
