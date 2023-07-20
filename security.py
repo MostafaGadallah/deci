@@ -43,6 +43,8 @@ def start():
             change_password()
         elif function == "totem":
             print("https://bit.ly/44xlI3k")
+        elif function == "storage":
+            storage()
         elif function == "exit":
             print("your home is secured")
             print("thank you for using our app")
@@ -83,39 +85,39 @@ def check():
             print("wrong credintial")
             username = checked_input("your user name:")
             pasword = checked_input("your password:")
+        print("true credintial")
     elif choise == "finger_print":
         fingerprint = checked_input("enter your finger print:")
         while fingerprint not in tfingerprint:
             print("this finger print not have acsses")
             fingerprint = checked_input("enter your finger print:")
-    print("true credintial")
+        print("true fingerprint")
 
 
 def change_user_name():
     global tusername
     check()
-    nusername = checked_input("new username")
-    cnusername = checked_input("confirm new username")
+    nusername = checked_input("new username:")
+    cnusername = checked_input("confirm new username:")
     while cnusername != nusername:
-        nusername = checked_input("new username")
-        cnusername = checked_input("confirm new username")
+        nusername = checked_input("new username:")
+        cnusername = checked_input("confirm new username:")
     tusername = cnusername
-    
 
 
 def change_password():
     global tpassword
     check()
-    npassword = checked_input("new password")
-    cnpassword = checked_input("confirm new password")
+    npassword = checked_input("new password:")
+    cnpassword = checked_input("confirm new password:")
     while cnpassword != npassword:
-        npassword = checked_input("new password")
-        cnpassword = checked_input("confirm new password")
+        npassword = checked_input("new password:")
+        cnpassword = checked_input("confirm new password:")
     tpassword = cnpassword
 
 
 def add_finger_print():
-    finger_print = checked_input("enter new finger print")
+    finger_print = checked_input("enter new finger print:")
     tfingerprint.append(finger_print)
 
 
@@ -147,12 +149,12 @@ def storage():
         chosie = checked_input("do you want to enter storage section:")
     if chosie == "yes":
         print("you are in storage section")
-        section = checked_input("fingerprint,photos or videos:")
-        while section not in ["fingerprint", "photos", "videos"]:
-            section = checked_input("fingerprint,photos or videos:")
+        section = checked_input("photos or videos:")
+        while section not in ["photos", "videos"]:
+            section = checked_input("photos or videos:")
         print("you are now in the "+section+" section")
     else:
-        print("you are  in main section")
+        print("you are in main section")
 
 
 def start_record():
@@ -225,6 +227,7 @@ break_the_mold
 out_of_the_box
 out_of_the_box
 check
+credintial
 three_ais
 out_of_the_box
 close_or_open
