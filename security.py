@@ -82,6 +82,7 @@ def check():
 
 
 def change_user_name():
+    global tusername
     check()
     nusername = input("new username")
     cnusername = input("confirm new username")
@@ -92,7 +93,7 @@ def change_user_name():
 
 
 def change_password():
-
+    global tpassword
     check()
     npassword = input("new username")
     cnpassword = input("confirm new username")
@@ -172,3 +173,6 @@ def end_record():
 
 
 start()
+""""
+
+"""

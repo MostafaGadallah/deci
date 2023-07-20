@@ -1,5 +1,5 @@
 import time
-# # import webbrowser
+import webbrowser
 tusername = "smart_aliens"
 tpassword = "break_the_mold"
 rooms = ["living_room", "bed_room1"
@@ -7,41 +7,55 @@ rooms = ["living_room", "bed_room1"
          "reception", "kitchen"]
 
 
+def checked_input(uinput):
+    if uinput == "exit":
+        exit()
+    else:
+        return input(uinput)
+
+
 def start():
     check()
     while True:
-        function = input("what do you need to do :")
+        function = checked_input("what do you need to do :")
         while function not in [
                 "analisys", "exit", "totem", "change_user_name",
-                "change_password", "close_or_open", "timer"
+                "change_password", "close_or_open", "timer", "check"
         ]:
             print("un valid input")
-            function = input("what do you need to do :")
+            function = checked_input("what do you need to do :")
         if function == "analisys":
             analisys()
         elif function == "change_user_name":
             change_user_name()
+        elif function == "check":
+            print(check())
         elif function == "change_password":
             change_password()
         elif function == "close_or_open":
-            choise = input("close or open:")
+            choise = checked_input("close or open:")
             while choise not in ["close", "open"]:
-                choise = input("close or open:")
-            room = input("wich room do you want:")
+                print("un valid input")
+                choise = checked_input("close or open:")
+            room = checked_input("wich room do you want:")
             while room != "all" and room not in rooms:
-                room = input("wich room do you want:")
+                print("un valid input")
+                room = checked_input("wich room do you want:")
             close_or_open(choise, room, 0)
         elif function == "timer":
-            time = input("enter the time py seconds:")
+            time = checked_input("enter the time py seconds:")
             while not check_numper(time):
-                time = input("enter the time py seconds:")
+                print("un valid input")
+                time = checked_input("enter the time py seconds:")
             time = int(time)
-            choise = input("close or open:")
+            choise = checked_input("close or open:")
             while choise not in ["close", "open"]:
-                choise = input("close or open:")
-            room = input("wich room do you want:")
+                print("un valid input")
+                choise = checked_input("close or open:")
+            room = checked_input("wich room do you want:")
             while room != "all" and room not in rooms:
-                room = input("wich room do you want:")
+                print("un valid input")
+                room = checked_input("wich room do you want:")
             close_or_open(choise, room, time)
         elif function == "totem":
             print("https://bit.ly/44xlI3k")
@@ -54,23 +68,23 @@ def check_numper(number):
     try:
         int(number)
         return True
-    except NameError:
+    except ValueError:
         print("not a numper")
         return False
 
 
 def analisys():
-    num = input("how many devaises do you have:")
+    num = checked_input("how many devaises do you have:")
     while not check_numper(num):
-        num = input("how many devaises do you have:")
+        num = checked_input("how many devaises do you have:")
     num = int(num)
     devises_names = []
     devises_usages = []
     for i in range(num):
-        devise_name = input("devise name:")
-        devise_usage = input("devise usage by wats:")
+        devise_name = checked_input("devise name:")
+        devise_usage = checked_input("devise usage by wats:")
         while not check_numper(devise_usage):
-            devise_usage = input("devise usage by wats:")
+            devise_usage = checked_input("devise usage by wats:")
         devise_usage = int(devise_usage)
         devises_names.append(devise_name)
         devises_usages.append(devise_usage)
@@ -95,34 +109,34 @@ def close_or_open(choise, room, ntime):
             time.sleep(ntime)
             print("the devises is opened")
     else:
-        devise = input("wich devise do you want:")
+        devise = checked_input("wich devise do you want:")
         if room == "living_room":
             while devise not in ["tv", "lamp", "fan", "all_devises"]:
                 print("this devise not in living room")
-                devise = input("wich devise do you want:")
+                devise = checked_input("wich devise do you want:")
         elif room == "bed_room1":
             while devise not in ["tv", "lamp", "fan", "all_devises"]:
                 print("this devise not in bed room1")
-                devise = input("wich devise do you want:")
+                devise = checked_input("wich devise do you want:")
         elif room == "bed_room2":
             while devise not in ["computer", "lamp", "fan", "all_devises"]:
                 print("this devise not in bed room2")
-                devise = input("wich devise do you want:")
+                devise = checked_input("wich devise do you want:")
         elif room == "bathroom":
             while devise not in ["lamp", "smart_toilet", "smart_dosh",
                                  "smart_water_tap", "all_devises"]:
                 print("this devise not in bath room")
-                devise = input("wich devise do you want:")
+                devise = checked_input("wich devise do you want:")
         elif room == "reception":
             while devise not in ["lamp", "softening",
                                  "fan", "radio", "all_devises"]:
                 print("this devise not in reception hall")
-                devise = input("wich devise do you want:")
+                devise = checked_input("wich devise do you want:")
         elif room == "kitchen":
             while devise not in ["lamp", "oven", "washing_machine",
                                  "fridge", "freezer", "all_devises"]:
                 print("this devise not in kitchen")
-                devise = input("wich devise do you want:")
+                devise = checked_input("wich devise do you want:")
         if choise == "close":
             time.sleep(ntime)
             print("the "+devise+" in the "+room+" is closed")
@@ -132,32 +146,107 @@ def close_or_open(choise, room, ntime):
 
 
 def check():
-    username = input("your user name:")
-    pasword = input("your password:")
+    username = checked_input("your user name:")
+    pasword = checked_input("your password:")
     while username != tusername or pasword != tpassword:
         print("wrong credintial")
-        username = input("your user name:")
-        pasword = input("your password:")
+        username = checked_input("your user name:")
+        pasword = checked_input("your password:")
 
 
 def change_user_name():
+    global tusername
     check()
-    nusername = input("new username:")
-    cnusername = input("confirm new username:")
+    nusername = checked_input("new username:")
+    cnusername = checked_input("confirm new username:")
     while cnusername != nusername:
-        nusername = input("new username:")
-        cnusername = input("confirm new username:")
+        print("not identicl")
+        nusername = checked_input("new username:")
+        cnusername = checked_input("confirm new username:")
     tusername = cnusername
 
 
 def change_password():
+    global tpassword
     check()
-    npassword = input("new username:")
-    cnpassword = input("confirm new username:")
+    npassword = checked_input("new username:")
+    cnpassword = checked_input("confirm new username:")
     while cnpassword != npassword:
-        npassword = input("new username:")
-        cnpassword = input("confirm new username:")
+        print("not identicl")
+        npassword = checked_input("new username:")
+        cnpassword = checked_input("confirm new username:")
     tpassword = cnpassword
 
 
 start()
+"""
+smart_aliens
+wrong_password
+wrong_user_name
+break_the_mold
+smart_aliens
+break_the_mold
+sadkjdakljdkja
+analisys
+sdsadx
+3
+tv
+asd
+4
+fan
+6
+lamp
+10
+totem
+change_user_name
+smart_aliens
+break_the_mold
+three_ais
+three_ais
+check
+smart_aliens
+break_the_mold
+three_ais
+break_the_mold
+change_password
+three_ais
+break_the_mold
+out_of_the_box
+out_of_the_box
+check
+three_ais
+out_of_the_box
+close_or_open
+aqsdasd
+close
+asdasd
+all
+close_or_open
+close
+living_room
+all_devises
+close_or_open
+close
+bathroom
+fan
+smart_toilet
+timer
+qeqweqda
+16
+aqsdasd
+close
+asdasd
+all
+timer
+5
+close
+living_room
+all_devises
+timer
+7
+close
+bathroom
+fan
+smart_toilet
+exit
+"""
