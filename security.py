@@ -21,7 +21,7 @@ def start():
             "livecam", "close_or_open",
             "start_record", "add_finger_print",
             "end_record", "exit", "totem", "check",
-            "change_user_name", "change_password"
+            "change_user_name", "change_password", "storage"
         ]:
             print("un valid input")
             function = checked_input("what do you need to do :")
@@ -232,5 +232,13 @@ three_ais
 out_of_the_box
 close_or_open
 open
+storage
+yes
+photos
+storage
+no
+storage
+yes
+photos
 exit
 """
